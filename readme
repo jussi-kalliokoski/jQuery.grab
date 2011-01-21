@@ -14,7 +14,7 @@ $('div').grab({
 		this.innerHTML = 'Started at ' + e.position.x + ', ' + e.position.y + '<br />';
 	},
 	onmove: function(e){
-'		$(this).css({
+		$(this).css({
 			left: (e.move.x < 0 ? '' : '+') + e.move.x + 'px',
 			top: (e.move.y < 0 ? '' : '+') + e.move.y + 'px'
 		});

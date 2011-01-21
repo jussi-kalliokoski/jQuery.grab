@@ -177,12 +177,15 @@
 			e.data.onfinish.call(e.data.element, e.data);
 		}
 	}
-	$.grab = function(a, b){
+
+	bind._binds = [];
+
+	$.fn.grab = function(a, b){
 		return this.each(function(){
 			return grab(this, a, b);
 		});
 	};
-	$.ungrab = function(a){
+	$.fn.ungrab = function(a){
 		return this.each(function(){
 			return ungrab(this, a);
 		});

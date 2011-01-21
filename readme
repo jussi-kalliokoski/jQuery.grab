@@ -1,0 +1,26 @@
+This is a ported library from Jin.js::gestures.
+
+It basically allows you to have unified gesture on both touch and mouse devices to 'grab' onto objects and cast events to that.
+
+It provides the event objects with three pieces of information:
+ * position (pageX and pageY)
+ * move (how much mouse moved since previous event)
+ * offset (how much mouse has moved since start)
+
+Example:
+$('div').grab({
+	onstart: function(e){
+		this.innerHTML = 'Started at ' + e.position.x + ', ' + e.position.y + '<br />';
+	},
+	onmove: function(e){
+'		$(this).css({
+			left: (e.move.x < 0 ? '' : '+') + e.move.x + 'px',
+			top: (e.move.y < 0 ? '' : '+') + e.move.y + 'px'
+		});
+	},
+	onfinish: function(e){
+		this.innerHTML += 'Finished at ' + e.offset.x + ', ' + e.offset.y + '<br />';
+		this.innerHTML += e.passdata;
+	},
+	passdata: 'The stuff got succesfully passed.' // you can name this argument whatever you like, the whole object is passed on.
+});

@@ -6,6 +6,7 @@ It provides the event objects with three pieces of information:
  * position (pageX and pageY)
  * move (how much mouse moved since previous event)
  * offset (how much mouse has moved since start)
+ * start
 
 Example:
 $('div').grab({

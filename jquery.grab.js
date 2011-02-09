@@ -6,19 +6,12 @@
 		touchstart	= 'touchstart',
 		touchmove	= 'touchmove',
 		touchend	= 'touchend',
-		touchcancel	= 'touchcancel',
-		gesturestart	= 'gesturestart',
-		gesturechange	= 'gesturechange',
-		gestureend	= 'gestureend',
-		gesturecancel	= 'gesturecancel',
-		MozTouchDown	= 'MozTouchDown',
-		MozTouchMove	= 'MozTouchMove',
-		MozTouchUp	= 'MozTouchUp',
-		mousewheel	= 'mousewheel',
-		DOMMouseScroll	= 'DOMMouseScroll';
-	
+		touchcancel	= 'touchcancel';
 
 	function unbind(elem, type, func){
+		if (type.substr(0,5) !== 'touch'){ // A temporary fix for IE8 data passing problem in Jin.
+			$(elem).unbind(type, func, pass);
+		}
 		var fnc, i;
 		for (i=0; i<bind._binds.length; i++){
 			if (bind._binds[i].elem === elem && bind._binds[i].type === type && bind._binds[i].func === func){
@@ -33,6 +26,9 @@
 	}
 
 	function bind(elem, type, func, pass){
+		if (type.substr(0,5) !== 'touch'){ // A temporary fix for IE8 data passing problem in Jin.
+			$(elem).bind(type, func, pass);
+		}
 		var fnc, i;
 		if (bind[type]){
 			return bind[type].bind(elem, type, func, pass);

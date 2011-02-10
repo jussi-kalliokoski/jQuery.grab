@@ -10,7 +10,7 @@
 
 	function unbind(elem, type, func){
 		if (type.substr(0,5) !== 'touch'){ // A temporary fix for IE8 data passing problem in Jin.
-			return $(elem).unbind(type, pass, func);
+			return $(elem).unbind(type, func);
 		}
 		var fnc, i;
 		for (i=0; i<bind._binds.length; i++){
